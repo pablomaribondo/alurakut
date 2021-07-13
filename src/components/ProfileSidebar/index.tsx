@@ -1,31 +1,14 @@
 import { FC } from 'react';
-import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  a {
-    font-size: 12px;
-    color: ${({ theme }) => theme.colors.colorPrimary};
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    text-decoration: none;
+import { Wrapper } from './styles';
 
-    img {
-      width: 16px;
-      height: 16px;
-      margin-right: 5px;
-    }
-  }
-`;
-
-interface MenuProfileSidebarProps {
+interface ProfileSidebarProps {
   username: string;
 }
 
-const MenuProfileSidebar: FC<MenuProfileSidebarProps> = ({ username }) => {
+const ProfileSidebar: FC<ProfileSidebarProps> = ({ username }) => {
   return (
-    <div className="alurakutMenuProfileSidebar">
+    <div className="profileSidebar">
       <div>
         <img
           src={`https://github.com/${username}.png`}
@@ -94,4 +77,4 @@ const MenuProfileSidebar: FC<MenuProfileSidebarProps> = ({ username }) => {
   );
 };
 
-export default MenuProfileSidebar;
+export default ProfileSidebar;
