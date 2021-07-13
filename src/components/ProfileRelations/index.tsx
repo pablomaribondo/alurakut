@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Box from "../Box";
+import Box from '../Box';
 
 export const ProfileRelationsBoxWrapper = styled(Box)`
   ul {
@@ -27,7 +27,7 @@ export const ProfileRelationsBoxWrapper = styled(Box)`
     border-radius: 8px;
 
     span {
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.textSecondaryColor};
       font-size: 10px;
       position: absolute;
       left: 0;
@@ -43,7 +43,7 @@ export const ProfileRelationsBoxWrapper = styled(Box)`
     }
 
     &:after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       top: 0;
