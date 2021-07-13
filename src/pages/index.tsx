@@ -1,39 +1,37 @@
-import MainGrid from "../src/components/MainGrid";
-import Box from "../src/components/Box";
-import {
-  AlurakutMenu,
-  OrkutNostalgicIconSet,
-} from "../src/lib/AlurakutCommons";
-import { ProfileRelationsBoxWrapper } from "../src/components/ProfileRelations";
+import MainGrid from '../components/MainGrid';
+import Box from '../components/Box';
+import Menu from '../components/Menu';
+import OrkutNostalgicIconSet from '../components/OrkutNostalgicIconSet';
+import { ProfileRelationsBoxWrapper } from '../components/ProfileRelations';
 
-const ProfileSidebar = ({ user }) => (
+const ProfileSidebar = ({ username }) => (
   <Box>
     <img
-      src={`https://github.com/${user}.png`}
-      style={{ borderRadius: "8px" }}
+      src={`https://github.com/${username}.png`}
+      style={{ borderRadius: '8px' }}
     />
   </Box>
 );
 
 const Home = () => {
-  const githubUser = "pablomaribondo";
+  const githubUser = 'pablomaribondo';
   const friends = [
-    "juunegreiros",
-    "omariosouto",
-    "peas",
-    "rafaballerini",
-    "marcobrunodev",
-    "felipefialho",
+    'juunegreiros',
+    'omariosouto',
+    'peas',
+    'rafaballerini',
+    'marcobrunodev',
+    'felipefialho'
   ];
 
   return (
     <>
-      <AlurakutMenu />
+      <Menu />
       <MainGrid>
-        <div className="profileArea" style={{ gridArea: "profileArea" }}>
-          <ProfileSidebar user={githubUser} />
+        <div className="profileArea" style={{ gridArea: 'profileArea' }}>
+          <ProfileSidebar username={githubUser} />
         </div>
-        <div className="welcomeArea" style={{ gridArea: "welcomeArea" }}>
+        <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
           <Box>
             <h1 className="title">Bem vindo(a)</h1>
 
@@ -42,7 +40,7 @@ const Home = () => {
         </div>
         <div
           className="profileRelationsArea"
-          style={{ gridArea: "profileRelationsArea" }}
+          style={{ gridArea: 'profileRelationsArea' }}
         >
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">Meus amigos ({friends.length})</h2>
