@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Box = styled.div`
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.backgroundTertiary};
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 10px;
 
   .boxLink {
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.primaryText};
+    color: ${({ theme }) => theme.colors.colorPrimary};
     text-decoration: none;
     font-weight: 800;
   }
@@ -29,7 +29,7 @@ const Box = styled.div`
     margin-bottom: 20px;
     font-size: 16px;
     font-weight: 700;
-    color: ${({ theme }) => theme.colors.gray1};
+    color: ${({ theme }) => theme.colors.textPrimaryColor};
     margin-bottom: 20px;
   }
 
@@ -42,15 +42,15 @@ const Box = styled.div`
 
   input {
     width: 100%;
-    background-color: ${({ theme }) => theme.colors.gray5};
-    color: ${({ theme }) => theme.colors.gray1};
+    background-color: ${({ theme }) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.textPrimaryColor};
     border: 0;
     padding: 14px 16px;
     margin-bottom: 14px;
     border-radius: 10000px;
 
     ::placeholder {
-      color: ${({ theme }) => theme.colors.gray1};
+      color: ${({ theme }) => theme.colors.textPrimaryColor};
       opacity: 1;
     }
   }
@@ -58,9 +58,9 @@ const Box = styled.div`
   button {
     border: 0;
     padding: 8px 12px;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.textSecondaryColor};
     border-radius: 10000px;
-    background-color: ${({ theme }) => theme.colors.primaryElement};
+    background-color: ${({ theme }) => theme.colors.elementPrimary};
   }
 `;
 
