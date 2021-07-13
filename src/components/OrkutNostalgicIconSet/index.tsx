@@ -1,6 +1,20 @@
 import { FC } from 'react';
 
-import { List } from './OrkutNostalgicIconSet.styles';
+import { List } from './styles';
+
+const ELEMENTS = [
+  { name: 'Recados', slug: 'recados', icon: 'book' },
+  { name: 'Fotos', slug: 'fotos', icon: 'camera' },
+  { name: 'Videos', slug: 'videos', icon: 'video-camera' },
+  { name: 'Fãs', slug: 'fas', icon: 'star' },
+  { name: 'Mensagens', slug: 'mensagens', icon: 'email' }
+];
+
+const ATTRIBUTES = [
+  { name: 'Confiável', slug: 'confiavel', icon: 'smile' },
+  { name: 'Legal', slug: 'legal', icon: 'cool' },
+  { name: 'Sexy', slug: 'sexy', icon: 'heart' }
+];
 
 interface OrkutNostalgicIconSetProps {
   [key: string]: number;
@@ -9,13 +23,7 @@ interface OrkutNostalgicIconSetProps {
 const OrkutNostalgicIconSet: FC<OrkutNostalgicIconSetProps> = props => {
   return (
     <List>
-      {[
-        { name: 'Recados', slug: 'recados', icon: 'book' },
-        { name: 'Fotos', slug: 'fotos', icon: 'camera' },
-        { name: 'Videos', slug: 'videos', icon: 'video-camera' },
-        { name: 'Fãs', slug: 'fas', icon: 'star' },
-        { name: 'Mensagens', slug: 'mensagens', icon: 'email' }
-      ].map(({ name, slug, icon }) => (
+      {ELEMENTS.map(({ name, slug, icon }) => (
         <li key={`orkut__icon_set__${slug}`}>
           <span
             style={{ gridArea: 'title' }}
@@ -37,11 +45,7 @@ const OrkutNostalgicIconSet: FC<OrkutNostalgicIconSetProps> = props => {
           </span>
         </li>
       ))}
-      {[
-        { name: 'Confiável', slug: 'confiavel', icon: 'smile' },
-        { name: 'Legal', slug: 'legal', icon: 'cool' },
-        { name: 'Sexy', slug: 'sexy', icon: 'heart' }
-      ].map(({ name, slug, icon }) => {
+      {ATTRIBUTES.map(({ name, slug, icon }) => {
         const total = props[slug] ? props[slug] : 2;
 
         return (
