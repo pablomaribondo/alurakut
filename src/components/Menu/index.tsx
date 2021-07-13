@@ -1,15 +1,25 @@
 import { FC, useState } from 'react';
 
 import Link from '../Link';
-import MenuProfileSidebar from '../MenuProfileSidebar';
-import { Wrapper, Logo } from './Menu.styles';
+import ProfileSidebar from '../ProfileSidebar';
+import { Wrapper, Logo } from './styles';
+
+const MENU_ACTIONS = [
+  { name: 'Inicio', slug: '/' },
+  { name: 'Amigos', slug: '/amigos' },
+  { name: 'Comunidades', slug: '/comunidades' }
+];
 
 interface MenuProps {
   username: string;
 }
 
 const Menu: FC<MenuProps> = ({ username }) => {
-  const [isMenuOpen, setMenuState] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenuHandler = () => {
+    setIsMenuOpen(prevState => !prevState);
+  };
 
   return (
     <Wrapper isMenuOpen={isMenuOpen}>
@@ -17,11 +27,7 @@ const Menu: FC<MenuProps> = ({ username }) => {
         <Logo src={`${process.env.NEXT_PUBLIC_BASE_URL}/logo.svg`} />
 
         <nav style={{ flex: 1 }}>
-          {[
-            { name: 'Inicio', slug: '/' },
-            { name: 'Amigos', slug: '/amigos' },
-            { name: 'Comunidades', slug: '/comunidades' }
-          ].map(menuItem => (
+          {MENU_ACTIONS.map(menuItem => (
             <Link
               key={`key__${menuItem.name.toLocaleLowerCase()}`}
               href={`${menuItem.slug.toLocaleLowerCase()}`}
@@ -38,7 +44,7 @@ const Menu: FC<MenuProps> = ({ username }) => {
           </div>
         </nav>
 
-        <button type="button" onClick={() => setMenuState(!isMenuOpen)}>
+        <button type="button" onClick={toggleMenuHandler}>
           {isMenuOpen && (
             <img
               src={`${process.env.NEXT_PUBLIC_BASE_URL}/icons/menu-open.svg?v=${process.env.NEXT_PUBLIC_VERSION}`}
@@ -53,7 +59,7 @@ const Menu: FC<MenuProps> = ({ username }) => {
           )}
         </button>
       </div>
-      <MenuProfileSidebar username={username} />
+      <ProfileSidebar username={username} />
     </Wrapper>
   );
 };
