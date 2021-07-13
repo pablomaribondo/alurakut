@@ -4,7 +4,7 @@ export const Wrapper = styled.header<{ isMenuOpen: boolean }>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.elementTertiary};
 
-  .alurakutMenuProfileSidebar {
+  .profileSidebar {
     background: ${({ theme }) => theme.colors.backgroundTertiary};
     position: fixed;
     z-index: 100;
