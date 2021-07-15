@@ -17,10 +17,12 @@ const ATTRIBUTES = [
 ];
 
 interface OrkutNostalgicIconSetProps {
-  [key: string]: number;
+  items: {
+    [key: string]: number;
+  };
 }
 
-const OrkutNostalgicIconSet: FC<OrkutNostalgicIconSetProps> = props => {
+const OrkutNostalgicIconSet: FC<OrkutNostalgicIconSetProps> = ({ items }) => {
   return (
     <List>
       {ELEMENTS.map(({ name, slug, icon }) => (
@@ -41,12 +43,12 @@ const OrkutNostalgicIconSet: FC<OrkutNostalgicIconSetProps> = props => {
               src={`${process.env.NEXT_PUBLIC_BASE_URL}/icons/${icon}.svg`}
               alt=""
             />
-            {props[slug] ? props[slug] : 0}
+            {items[slug] ? items[slug] : 0}
           </span>
         </li>
       ))}
       {ATTRIBUTES.map(({ name, slug, icon }) => {
-        const total = props[slug] ? props[slug] : 2;
+        const total = items[slug] ? items[slug] : 2;
 
         return (
           <li key={`orkut__icon_set__${slug}`}>

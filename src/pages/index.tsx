@@ -78,7 +78,18 @@ const Home: FC = () => {
           <Box>
             <h1 className="title">Bem vindo(a)</h1>
 
-            <OrkutNostalgicIconSet />
+            <OrkutNostalgicIconSet
+              items={{
+                recados: ~~(Math.random() * 20) + 1,
+                fotos: ~~(Math.random() * 20) + 1,
+                videos: ~~(Math.random() * 20) + 1,
+                fas: ~~(Math.random() * 20) + 1,
+                mensagens: ~~(Math.random() * 20) + 1,
+                confiavel: ~~(Math.random() * 3) + 1,
+                legal: ~~(Math.random() * 3) + 1,
+                sexy: ~~(Math.random() * 3) + 1
+              }}
+            />
           </Box>
 
           <Box>
