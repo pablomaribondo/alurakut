@@ -12,13 +12,14 @@ export type Network = {
 interface NetworkGridProps {
   title: string;
   data: Network[];
+  length?: number;
 }
 
-const NetworkGrid: FC<NetworkGridProps> = ({ title, data }) => {
+const NetworkGrid: FC<NetworkGridProps> = ({ title, data, length }) => {
   return (
     <Wrapper>
       <h2 className="smallTitle">
-        {title} ({data.length})
+        {title} ({length || data.length})
       </h2>
       <ul>
         {data.slice(0, 6).map(element => (

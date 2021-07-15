@@ -1,4 +1,4 @@
-import { FormEvent, FC, useState } from 'react';
+import { FormEvent, FC, useState, useEffect } from 'react';
 
 import MainGrid from '../components/MainGrid';
 import Box from '../components/Box';
@@ -16,52 +16,39 @@ const COMMUNITIES = [
     name: 'Eu odeio acordar cedo'
   }
 ];
-const FRIENDS = [
-  {
-    id: 'friend1',
-    url: '/users/juunegreiros',
-    image: 'https://github.com/juunegreiros.png',
-    name: 'juunegreiros'
-  },
-  {
-    id: 'friend2',
-    url: '/users/omariosouto',
-    image: 'https://github.com/omariosouto.png',
-    name: 'omariosouto'
-  },
-  {
-    id: 'friend3',
-    url: '/users/peas',
-    image: 'https://github.com/peas.png',
-    name: 'peas'
-  },
-  {
-    id: 'friend4',
-    url: '/users/rafaballerini',
-    image: 'https://github.com/rafaballerini.png',
-    name: 'rafaballerini'
-  },
-  {
-    id: 'friend5',
-    url: '/users/marcobrunodev',
-    image: 'https://github.com/marcobrunodev.png',
-    name: 'marcobrunodev'
-  },
-  {
-    id: 'friend6',
-    url: '/users/felipefialho',
-    image: 'https://github.com/felipefialho.png',
-    name: 'felipefialho'
-  },
-  {
-    id: 'friend7',
-    url: '/users/diego3g',
-    image: 'https://github.com/diego3g.png',
-    name: 'diego3g'
-  }
-];
+
 const Home: FC = () => {
   const [communities, setCommunities] = useState<Network[]>(COMMUNITIES);
+  const [followers, setFollowers] = useState([]);
+  const [user, setUser] = useState({ following: 0 });
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        `https://api.github.com/users/${USER}/following`
+      );
+
+      const data = await response.json();
+
+      const formattedData = data.map((element: any) => ({
+        id: element.id,
+        url: element.html_url,
+        image: element.avatar_url,
+        name: element.login
+      }));
+      setFollowers(formattedData);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`https://api.github.com/users/${USER}`);
+
+      const data = await response.json();
+
+      setUser(data);
+    })();
+  }, []);
 
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -130,7 +117,11 @@ const Home: FC = () => {
           className="profileRelationsArea"
           style={{ gridArea: 'profileRelationsArea' }}
         >
-          <NetworkGrid title="Meus amigos" data={FRIENDS} />
+          <NetworkGrid
+            title="Meus amigos"
+            data={followers}
+            length={user?.following}
+          />
           <NetworkGrid title="Minhas comunidades" data={communities} />
         </div>
       </MainGrid>
